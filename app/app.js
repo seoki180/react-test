@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 const express = require('express')
 const body_parser = require('body-parser')
 const Router = require('./src/routes/home/index')
