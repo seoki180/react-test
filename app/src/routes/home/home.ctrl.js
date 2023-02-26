@@ -1,4 +1,4 @@
-const userStorage = require("../../models/userStorage")
+const User = require("../../models/User")
 
 const output = {
     hello : (req,res) =>{
@@ -7,29 +7,23 @@ const output = {
 
     login : (req,res) =>{
         res.render('home/login')
+    },
+    register : (req,res) => {
+        res.render("home/register")
     }
 }
 
 const process = {
     login : (req,res) =>{
         const user= new User(req.body)
-        // const id = req.body.id
-        // const passwd = req.body.passwd
+        const response = user.login()
+        return res.json(response)
+    },
 
-
-        // const user = userStorage.getUsers("id","passwd")
-
-        // if(user.id.includes(id) && user.passwd.includes(passwd)){
-        //     return res.json({
-        //         success : true
-        //     })
-        // }       
-        // else{
-        //     return res.json({
-        //         success : false,
-        //         msg : "실패"
-        //     })
-        // }
+    register : (req,res) =>{
+        const user = new User(req.body)
+        const response = user.register()
+        return res.json(response)
     }
 }
 
